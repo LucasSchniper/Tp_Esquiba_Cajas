@@ -1,29 +1,30 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionCja : MonoBehaviour
+public class colisionCja : MonoBehaviour
 {
-    // Start is called before the first frame update
+    float[] posicionesX = { -2f, 0f, 2f };
+    float spawnY;
+
     void Start()
     {
-        
+        spawnY = transform.position.y;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void Update() { }
+
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
+            Time.timeScale = 0;
             Destroy(col.gameObject);
         }
         else if (col.gameObject.CompareTag("Piso"))
         {
-            Destroy(col.gameObject);
+            float randomX = posicionesX[Random.Range(0, posicionesX.Length)];
+            transform.position = new Vector3(randomX, spawnY, transform.position.z);
         }
     }
 }

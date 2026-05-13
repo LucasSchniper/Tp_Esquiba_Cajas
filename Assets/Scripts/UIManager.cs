@@ -1,18 +1,20 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Text timerText;
 
-    // Update is called once per frame
+    public TextMeshProUGUI timerTextMeshPro;
+    float tiempo;
+
     void Update()
     {
-        
+        if (Time.timeScale == 0) return;
+        tiempo += Time.deltaTime;
+        timerTextMeshPro.text = "Tiempo: " + tiempo.ToString("F2");
     }
 }

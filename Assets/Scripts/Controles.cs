@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +23,10 @@ public class Controles : MonoBehaviour
         {
             transform.Translate(new Vector3(-2f, 0, 0));
         }
+
+        Vector3 pos = transform.position;
+        pos.x = Mathf.Clamp(pos.x, -2f, 2f);
+        transform.position = pos;
     }       
 
 }
